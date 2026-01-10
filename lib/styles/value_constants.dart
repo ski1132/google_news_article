@@ -1,4 +1,4 @@
-abstract class AppValues {
+abstract class ValueConstants {
   static const double padding2 = 2;
   static const double padding4 = 4;
   static const double padding8 = 8;

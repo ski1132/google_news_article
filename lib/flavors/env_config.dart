@@ -10,11 +10,11 @@ class EnvConfig {
   EnvConfig({required this.appName, required this.baseUrl}) {
     logger = Logger(
       printer: PrettyPrinter(
-        methodCount: AppValues.loggerMethodCount,
+        methodCount: ValueConstants.loggerMethodCount,
         // number of method calls to be displayed
-        errorMethodCount: AppValues.loggerErrorMethodCount,
+        errorMethodCount: ValueConstants.loggerErrorMethodCount,
         // number of method calls if stacktrace is provided
-        lineLength: AppValues.loggerLineLength,
+        lineLength: ValueConstants.loggerLineLength,
         // width of the output
         colors: true,
         // Colorful log messages

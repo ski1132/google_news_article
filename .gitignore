@@ -56,3 +56,4 @@ pubspec.lock
 # FVM Version Cache
 .fvm/
 .env
+.fvmrc

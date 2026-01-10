@@ -26,8 +26,8 @@ class ContainerCurved extends StatelessWidget {
     this.backgroundColor = ColorConstants.colorWhite,
     this.gradient,
     this.padding = const EdgeInsets.symmetric(
-      horizontal: AppValues.padding16,
-      vertical: AppValues.padding12,
+      horizontal: ValueConstants.padding16,
+      vertical: ValueConstants.padding12,
     ),
     this.margin = const EdgeInsets.all(0),
     this.borderRadius,
@@ -48,7 +48,7 @@ class ContainerCurved extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
           borderRadius:
-              borderRadius ?? BorderRadius.circular(AppValues.padding8),
+              borderRadius ?? BorderRadius.circular(ValueConstants.padding8),
           color: gradient == null ? backgroundColor : null,
           gradient: gradient,
           image: backgroundImage,

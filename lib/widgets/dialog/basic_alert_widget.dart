@@ -12,7 +12,7 @@ class BasicAlertWidget {
   static Future alertWarning({String contents = ""}) async {
     if (Get.isDialogOpen ?? false) Get.back();
     await Get.defaultDialog(
-      contentPadding: const EdgeInsets.all(AppValues.padding16),
+      contentPadding: const EdgeInsets.all(ValueConstants.padding16),
       backgroundColor: ColorConstants.colorWhite,
       title: 'warning'.tr,
       titleStyle: StyleConstants.textBlack20,

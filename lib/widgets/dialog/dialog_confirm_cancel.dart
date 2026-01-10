@@ -34,7 +34,7 @@ class DialogConfirmCancel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: ColorConstants.colorPrimary,
-      insetPadding: const EdgeInsets.all(AppValues.iconDefaultSize),
+      insetPadding: const EdgeInsets.all(ValueConstants.iconDefaultSize),
       child: Stack(
         children: [
           Positioned(
@@ -49,19 +49,19 @@ class DialogConfirmCancel extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(AppValues.padding24),
+            padding: const EdgeInsets.all(ValueConstants.padding24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   title,
                   style: StyleConstants.textWhite20,
-                ).paddingOnly(bottom: AppValues.padding16),
+                ).paddingOnly(bottom: ValueConstants.padding16),
                 message != null
                     ? Text(
                         message!,
                         style: StyleConstants.textWhite20,
-                      ).paddingOnly(bottom: AppValues.padding16)
+                      ).paddingOnly(bottom: ValueConstants.padding16)
                     : const SizedBox(),
                 Row(
                   children: onCancel == null
@@ -95,7 +95,7 @@ class DialogConfirmCancel extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: AppValues.padding16),
+                          const SizedBox(width: ValueConstants.padding16),
                           Expanded(
                             child: ContainerCurved(
                               backgroundColor: confirmButtonColor,

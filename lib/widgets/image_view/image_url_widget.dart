@@ -35,7 +35,7 @@ class ImageUrlWidget extends StatelessWidget {
         imageBuilder: (context, imageProvider) =>
             errorType == ImageErrorType.league
             ? ContainerCurved(
-                padding: const EdgeInsets.all(AppValues.padding2),
+                padding: const EdgeInsets.all(ValueConstants.padding2),
                 backgroundColor: ColorConstants.colorWhite,
                 child: Container(
                   decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class ImageUrlWidget extends StatelessWidget {
                 ),
               )
             : ClipRRect(
-                borderRadius: BorderRadius.circular(AppValues.padding8),
+                borderRadius: BorderRadius.circular(ValueConstants.padding8),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(image: imageProvider, fit: fit),
