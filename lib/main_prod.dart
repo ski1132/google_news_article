@@ -1,0 +1,36 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' show dotenv;
+import 'package:google_news_article/app.dart';
+import 'package:google_news_article/flavors/build_config.dart';
+import 'package:google_news_article/flavors/env_config.dart';
+import 'package:google_news_article/flavors/environment.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await initializeDateFormatting('th_TH');
+
+  await dotenv.load(fileName: ".env");
+  String baseUrl = dotenv.env['baseUrl'] ?? ''; //main ip
+
+  EnvConfig prodConfig = EnvConfig(appName: "Google News", baseUrl: baseUrl);
+
+  BuildConfig.instantiate(
+    envType: Environment.PRODUCTION,
+    envConfig: prodConfig,
+  );
+  await _initFirebase();
+  runApp(const App());
+}
+
+Future<void> _initFirebase() async {
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  // NotificationService().onInit();
+}

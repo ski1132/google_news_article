@@ -43,3 +43,16 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# vscode
+/lib/gen
+/linux
+/macos
+windows/
+web/
+pubspec.lock
+.vscode
+
+# FVM Version Cache
+.fvm/
+.env

@@ -1,16 +1,42 @@
-# google_news_article
+# This project use Flutter version 3.29.0 ,Dart version 3.7.0
 
-A new Flutter project.
+# Before run project every time, run command like this
+# 1.flutter clean
+# 2.flutter pub get
+# 3.flutter pub run build_runner build --delete-conflicting-outputs
+# 4.flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Run project like this
+# flutter run -t lib/main_prod.dart --flavor prod
+# flutter run -t lib/main_dev.dart --flavor dev
+#
+# The project is structured as follows:
+# 
+# lib
+# │   main.dart   
+# └───ui
+# │   └───controller
+# │       │   example_view_model.dart
+# │   └───get
+# │       └───binding
+# │       │   get_example_screen.dart
+# │   └───post
+# │       └───binding
+# │       │   post_example_screen.dart
+# └───remote
+# │   └───api
+# │       │   api_endpoints.dart
+# │       │   http_manager.dart
+# │   └───model
+# │       │   base_model.dart
+# │       │   base_model.g.dart
+# │   └───repository
+# │       │   app_repository.dart
+# │       │   app_repository_impl.dart
+# │   └───response
+# │       │   api_response.dart
+# │       │   api_response.freezed.dart
+# │       │   ...
+# └───router
+# │       │   screen_controller.dart
+# │       │   screen_name.dart

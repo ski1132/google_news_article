@@ -1,0 +1,34 @@
+{
+    "app_name": "Google News",
+    "common": {
+        "search": "ค้นหา",
+        "submit": "ส่ง",
+        "confirm": "ยืนยัน",
+        "cancel": "ยกเลิก",
+        "filter": "ตัวกรอง",
+        "sort": "เรียง",
+        "sort_alphabet_ascending": "ก→ฮ",
+        "sort_alphabet_descending": "ฮ→ก",
+        "clear": "ล้างค่า",
+        "like": "ถูกใจ",
+        "share": "แชร์",
+        "completed": "ดำเนินการสำเร็จ",
+        "retry": "ลองใหม่",
+        "close": "ปิด",
+        "next": "ต่อไป",
+        "skip": "ข้าม",
+        "reload": "โหลดใหม่"
+    },
+    "exception": {
+        "error": {
+            "title": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
+            "description": "ขออภัย เกิดปัญหาขึ้นกับระบบ",
+            "button_label": "ลองอีกครั้ง"
+        },
+        "empty": {
+            "title": "ไม่มีข้อมูล",
+            "description": "กรุณาลองใหม่อีกครั้งในภายหลัง",
+            "button_label": "รีเฟรช"
+        }
+    }
+}
