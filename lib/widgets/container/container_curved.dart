@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_news_article/styles/color_constants.dart';
-import 'package:google_news_article/styles/value_constants.dart';
 
 import '../button/ink_well_no_splash.dart';
 
@@ -25,10 +24,7 @@ class ContainerCurved extends StatelessWidget {
     this.borderColor = ColorConstants.transparent,
     this.backgroundColor = ColorConstants.colorWhite,
     this.gradient,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: ValueConstants.padding16,
-      vertical: ValueConstants.padding12,
-    ),
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     this.margin = const EdgeInsets.all(0),
     this.borderRadius,
     this.backgroundImage,
@@ -47,8 +43,7 @@ class ContainerCurved extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
-          borderRadius:
-              borderRadius ?? BorderRadius.circular(ValueConstants.padding8),
+          borderRadius: borderRadius ?? BorderRadius.circular(8),
           color: gradient == null ? backgroundColor : null,
           gradient: gradient,
           image: backgroundImage,

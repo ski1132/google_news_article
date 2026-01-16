@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../styles/color_constants.dart';
-import '../../styles/value_constants.dart';
 import '../../styles/style_constants.dart';
 import '../container/container_curved.dart';
 import '../text/text_custom.dart';
@@ -12,7 +11,7 @@ class BasicAlertWidget {
   static Future alertWarning({String contents = ""}) async {
     if (Get.isDialogOpen ?? false) Get.back();
     await Get.defaultDialog(
-      contentPadding: const EdgeInsets.all(ValueConstants.padding16),
+      contentPadding: const EdgeInsets.all(16),
       backgroundColor: ColorConstants.colorWhite,
       title: 'warning'.tr,
       titleStyle: StyleConstants.textBlack20,

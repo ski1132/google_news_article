@@ -24,13 +24,5 @@ void main() async {
     envType: Environment.PRODUCTION,
     envConfig: prodConfig,
   );
-  await _initFirebase();
   runApp(const App());
-}
-
-Future<void> _initFirebase() async {
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  // NotificationService().onInit();
 }

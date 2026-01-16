@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../styles/color_constants.dart';
-import '../../styles/value_constants.dart';
 import '../../styles/style_constants.dart';
 import '../container/container_curved.dart';
 import '../text/text_custom.dart';
@@ -34,7 +33,7 @@ class DialogConfirmCancel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: ColorConstants.colorPrimary,
-      insetPadding: const EdgeInsets.all(ValueConstants.iconDefaultSize),
+      insetPadding: const EdgeInsets.all(24),
       child: Stack(
         children: [
           Positioned(
@@ -49,19 +48,19 @@ class DialogConfirmCancel extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(ValueConstants.padding24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   title,
                   style: StyleConstants.textWhite20,
-                ).paddingOnly(bottom: ValueConstants.padding16),
+                ).paddingOnly(bottom: 16),
                 message != null
                     ? Text(
                         message!,
                         style: StyleConstants.textWhite20,
-                      ).paddingOnly(bottom: ValueConstants.padding16)
+                      ).paddingOnly(bottom: 16)
                     : const SizedBox(),
                 Row(
                   children: onCancel == null
@@ -95,7 +94,7 @@ class DialogConfirmCancel extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: ValueConstants.padding16),
+                          const SizedBox(width: 16),
                           Expanded(
                             child: ContainerCurved(
                               backgroundColor: confirmButtonColor,

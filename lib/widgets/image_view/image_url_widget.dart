@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../styles/color_constants.dart';
-import '../../styles/value_constants.dart';
 import '../../utils/enum_custom.dart';
 import '../container/container_curved.dart';
 
@@ -35,7 +34,7 @@ class ImageUrlWidget extends StatelessWidget {
         imageBuilder: (context, imageProvider) =>
             errorType == ImageErrorType.league
             ? ContainerCurved(
-                padding: const EdgeInsets.all(ValueConstants.padding2),
+                padding: const EdgeInsets.all(2),
                 backgroundColor: ColorConstants.colorWhite,
                 child: Container(
                   decoration: BoxDecoration(
@@ -44,7 +43,7 @@ class ImageUrlWidget extends StatelessWidget {
                 ),
               )
             : ClipRRect(
-                borderRadius: BorderRadius.circular(ValueConstants.padding8),
+                borderRadius: BorderRadius.circular(8),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(image: imageProvider, fit: fit),

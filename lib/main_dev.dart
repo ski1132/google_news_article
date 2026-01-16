@@ -23,42 +23,5 @@ void main() async {
     envType: Environment.DEVELOPMENT,
     envConfig: devConfig,
   );
-  await initFirebase();
   runApp(const App());
-
-  // try {
-  //   final result = await InternetAddress.lookup('example.com');
-  //   if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-  //     log(' ======================+> connected');
-  //   }
-  // } on SocketException catch (_) {
-  //   log(' ======================-> not connected');
-  // }
 }
-
-Future<void> initFirebase() async {
-  // await Firebase.initializeApp(
-  //   name: 'UpScore', //ตั้งให้ไม่ error ว่าซ้ำกับ Default
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  // NotificationService().onInit();
-}
-
-
-// import UIKit
-// import FirebaseCore
-
-
-// @UIApplicationMain
-// class AppDelegate: UIResponder, UIApplicationDelegate {
-
-//   var window: UIWindow?
-
-//   func application(_ application: UIApplication,
-//     didFinishLaunchingWithOptions launchOptions:
-//       [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//     FirebaseApp.configure()
-
-//     return true
-//   }
-// }
