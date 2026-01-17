@@ -4,15 +4,18 @@ import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:google_news_article/flavors/build_config.dart';
+import 'package:google_news_article/flavors/env_config.dart';
 
 class DioService extends GetxService {
   late Dio _dio;
   Dio get dio => _dio;
 
-  String get baseUrl => BuildConfig.instance.config.baseUrl;
+  EnvConfig get buildConfig => BuildConfig.instance.config;
   Map<String, Object> get headers => {
     HttpHeaders.acceptHeader: 'application/json',
     HttpHeaders.contentTypeHeader: 'application/json',
+    'x-rapidapi-host': buildConfig.host,
+    'x-rapidapi-key': buildConfig.key,
   };
 
   @override
@@ -24,7 +27,7 @@ class DioService extends GetxService {
   void init() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: baseUrl,
+        baseUrl: buildConfig.baseUrl,
         connectTimeout: Duration(seconds: 10),
         receiveTimeout: Duration(seconds: 10),
         headers: headers,

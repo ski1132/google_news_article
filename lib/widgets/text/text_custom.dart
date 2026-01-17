@@ -13,7 +13,7 @@ class TextCustom extends StatelessWidget {
     this.text, {
     super.key,
     this.style = StyleConstants.textBlack20,
-    this.textAlign = TextAlign.center,
+    this.textAlign = TextAlign.left,
     this.maxLine,
     this.softWrap = true,
     this.textOverflow = TextOverflow.visible,

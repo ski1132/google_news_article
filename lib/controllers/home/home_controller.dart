@@ -1,3 +1,70 @@
-import 'package:google_news_article/widgets/base_controller/base_controller.dart';
+import 'package:get/get.dart';
+import 'package:google_news_article/generated/locale_keys.g.dart';
+import 'package:google_news_article/models/article_item_model.dart';
+import 'package:google_news_article/repository/home_repository.dart';
+import 'package:google_news_article/widgets/dialog/basic_alert_widget.dart';
+import 'package:logger/logger.dart';
 
-class HomeController extends BaseController {}
+class HomeController extends GetxController {
+  final repository = Get.find<HomeRepository>();
+
+  final dropdownValue = LocaleKeys.article_latest.tr.obs;
+  final dropdownItems = [
+    LocaleKeys.article_latest.tr,
+    LocaleKeys.article_world.tr,
+    LocaleKeys.article_business.tr,
+    LocaleKeys.article_entertainment.tr,
+    LocaleKeys.article_health.tr,
+    LocaleKeys.article_science.tr,
+    LocaleKeys.article_sport.tr,
+    LocaleKeys.article_technology.tr,
+  ];
+
+  final RxBool isLoading = false.obs;
+  final RxList<ArticleItemModel> articleItemModelList =
+      <ArticleItemModel>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    fetchArticleList(ArticleType.latest);
+  }
+
+  void setDropdownValue(String? value) {
+    if (value != null) {
+      dropdownValue.value = value;
+    }
+  }
+
+  void fetchArticleList(ArticleType articleType) async {
+    articleItemModelList.clear();
+    isLoading.value = true;
+    await repository
+        .getArticleByType(articleType)
+        .then((response) async {
+          try {
+            if (response.status == 'success') {
+              articleItemModelList.addAll(response.items);
+            } else {
+              Logger().e(
+                'fetchBannerList response status ${response.status} : ${response.message}',
+              );
+              BasicAlertWidget.alertWarning(
+                contents: response.message.toString(),
+              );
+            }
+          } catch (e) {
+            BasicAlertWidget.alertWarning(contents: '${e.toString()}!');
+            Logger().e('fetchBannerList catch : $e');
+          }
+        })
+        .onError((e, s) async {
+          BasicAlertWidget.alertWarning(contents: e.toString());
+          Logger().e('fetchBannerList onError : $e');
+        })
+        .whenComplete(() {
+          isLoading.value = false;
+        });
+  }
+}

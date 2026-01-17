@@ -9,6 +9,7 @@ abstract class ArticleResponseModel with _$ArticleResponseModel {
   const factory ArticleResponseModel({
     @JsonKey(name: "status") String? status,
     @Default([]) @JsonKey(name: "items") List<ArticleItemModel> items,
+    @JsonKey(name: "message") String? message,
   }) = _ArticleResponseModel;
 
   factory ArticleResponseModel.fromJson(Map<String, dynamic> json) =>

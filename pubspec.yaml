@@ -27,6 +27,7 @@ dependencies:
   easy_localization: ^3.0.8
   freezed_annotation: ^3.0.0
   retrofit: ^4.9.2
+  skeletonizer: ^2.1.2
 
 dev_dependencies:
   flutter_test:

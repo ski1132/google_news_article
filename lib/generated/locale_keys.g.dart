@@ -31,5 +31,14 @@ abstract class  LocaleKeys {
   static const exception_empty_button_label = 'exception.empty.button_label';
   static const exception_empty = 'exception.empty';
   static const exception = 'exception';
+  static const article_latest = 'article.latest';
+  static const article_world = 'article.world';
+  static const article_business = 'article.business';
+  static const article_entertainment = 'article.entertainment';
+  static const article_health = 'article.health';
+  static const article_science = 'article.science';
+  static const article_sport = 'article.sport';
+  static const article_technology = 'article.technology';
+  static const article = 'article';
 
 }

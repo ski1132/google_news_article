@@ -8,6 +8,30 @@ class HomeRepositoryImpl implements HomeRepository {
   final String defaultLang = 'en-US';
 
   @override
+  Future<ArticleResponseModel> getArticleByType(ArticleType type) {
+    return switch (type) {
+      ArticleType.latest => getArticleLatestList(),
+      ArticleType.world => getArticleWorldList(),
+      ArticleType.business => getArticleBusinessList(),
+      ArticleType.entertainment => getArticleEntertainmentList(),
+      ArticleType.health => getArticleHealthList(),
+      ArticleType.science => getArticleScienceList(),
+      ArticleType.sport => getArticleSportList(),
+      ArticleType.technology => getArticleTechnologyList(),
+    };
+  }
+
+  @override
+  Future<ArticleResponseModel> getArticleLatestList({String? lang}) {
+    return remoteSource.getArticleLatestList(lr: lang ?? defaultLang);
+  }
+
+  @override
+  Future<ArticleResponseModel> getArticleWorldList({String? lang}) {
+    return remoteSource.getArticleWorldList(lr: lang ?? defaultLang);
+  }
+
+  @override
   Future<ArticleResponseModel> getArticleBusinessList({String? lang}) {
     return remoteSource.getArticleBusinessList(lr: lang ?? defaultLang);
   }
@@ -23,11 +47,6 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<ArticleResponseModel> getArticleLatestList({String? lang}) {
-    return remoteSource.getArticleLatestList(lr: lang ?? defaultLang);
-  }
-
-  @override
   Future<ArticleResponseModel> getArticleScienceList({String? lang}) {
     return remoteSource.getArticleScienceList(lr: lang ?? defaultLang);
   }
@@ -40,10 +59,5 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<ArticleResponseModel> getArticleTechnologyList({String? lang}) {
     return remoteSource.getArticleTechnologyList(lr: lang ?? defaultLang);
-  }
-
-  @override
-  Future<ArticleResponseModel> getArticleWorldList({String? lang}) {
-    return remoteSource.getArticleWorldList(lr: lang ?? defaultLang);
   }
 }
