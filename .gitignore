@@ -62,3 +62,4 @@ pubspec.lock
 *.g.dart
 *.gen.dart
 *.freezed.dart
+Podfile.lock
