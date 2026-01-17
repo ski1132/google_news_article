@@ -1,22 +1,20 @@
 import 'package:get/get.dart';
-import 'package:google_news_article/controllers/home/home_controller.dart';
 import 'package:google_news_article/controllers/storage_controller.dart';
 import 'package:google_news_article/models/article_item_model.dart';
 
 class ArticleController extends GetxController {
-  ArticleController(this.articleModel, this.articleType);
+  ArticleController(this.articleModel, this.articleType, this.articleList);
 
   final Rx<ArticleItemModel> articleModel;
   final String articleType;
-  final List<ArticleItemModel> articleList = [];
+  final List<ArticleItemModel> articleList;
+
   final RxBool isFavorite = false.obs;
 
   @override
   void onInit() {
     super.onInit();
 
-    HomeController homeController = Get.find();
-    articleList.addAll(homeController.articleItemModelList);
     checkFavorite();
   }
 

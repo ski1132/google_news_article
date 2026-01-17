@@ -39,7 +39,9 @@ class StorageController extends GetxController {
     String? jsonString = await _preferenceManager.getString(
       _favoriteArticleListKey,
     );
-
+    if (jsonString == '') {
+      return [];
+    }
     List<dynamic> jsonList = jsonDecode(jsonString);
     List<ArticleItemModel> articleItemModelList = jsonList
         .map((json) => ArticleItemModel.fromJson(json))

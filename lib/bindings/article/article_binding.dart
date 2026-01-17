@@ -8,6 +8,7 @@ class ArticleBinding extends Bindings {
     final dynamic args = Get.arguments;
     final articleModel = args['articleModel'] as ArticleItemModel;
     final articleType = args['articleType'] as String;
-    Get.put(ArticleController(articleModel.obs, articleType));
+    final articleList = args['articleList'] as List<ArticleItemModel>;
+    Get.put(ArticleController(articleModel.obs, articleType, articleList));
   }
 }

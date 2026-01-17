@@ -16,16 +16,18 @@ class ArticlePage extends GetView<ArticleController> {
     return Scaffold(
       appBar: AppBar(
         title: TextCustom(
-          'other_news'.tr,
+          controller.articleType,
           style: StyleConstants.textBlack14Bold,
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_border, size: 28),
-            onPressed: () {
-              // Add favorite logic here
-            },
+          Obx(
+            () => IconButton(
+              icon: controller.isFavorite.value
+                  ? Icon(Icons.favorite, size: 28, color: Colors.red)
+                  : Icon(Icons.favorite_border, size: 28),
+              onPressed: () => controller.toggleFavorite(),
+            ),
           ),
           SizedBox(width: 16),
         ],
@@ -132,7 +134,7 @@ class ArticlePage extends GetView<ArticleController> {
                     child: TextCustom(
                       articleItemModel.timestamp
                               ?.formatEpochToDateTime()
-                              .formatDMYHM() ??
+                              .formatDMYHM(symbol: ' ') ??
                           '',
                       style: StyleConstants.textBlack12,
                       textAlign: TextAlign.left,

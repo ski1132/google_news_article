@@ -19,6 +19,7 @@ class LanguageLocaleString extends Translations {
     'no_data': 'No Data',
     'exceed_limit':
         'You have exceeded your request limit. Please upgrade your plan.',
+    'saved_articles': 'Saved articles',
   };
 
   Map<String, String> th = {
@@ -35,5 +36,6 @@ class LanguageLocaleString extends Translations {
     'next': 'ถัดไป',
     'no_data': 'ไม่พบข้อมูล',
     'exceed_limit': 'คุณส่งคำขอมาเกินลิมิตที่ตั้งไว้แล้ว กรุณาอัพเกรดแพลน',
+    'saved_articles': 'บทความที่บันทึกไว้',
   };
 }

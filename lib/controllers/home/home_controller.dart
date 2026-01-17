@@ -75,7 +75,12 @@ class HomeController extends GetxController {
       arguments: {
         'articleModel': articleItemModel,
         'articleType': dropdownValue.value.name.tr,
+        'articleList': articleItemModelList,
       },
     );
+  }
+
+  void routeToFavorite() {
+    Get.toNamed(AppRoutes.favorite);
   }
 }

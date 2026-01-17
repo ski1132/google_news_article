@@ -31,9 +31,7 @@ class HomePage extends GetView<HomeController> {
           Spacer(),
           IconButton(
             icon: const Icon(Icons.format_list_bulleted, size: 32),
-            onPressed: () {
-              // Add favorite logic here
-            },
+            onPressed: () => controller.routeToFavorite(),
           ),
         ],
       ),
@@ -148,6 +146,8 @@ class HomePage extends GetView<HomeController> {
             TextCustom(
               articleItemModel.title ?? '',
               style: StyleConstants.textBlack14Bold,
+              maxLine: 2,
+              textOverflow: TextOverflow.ellipsis,
             ),
             ImageUrlWidget(
               articleItemModel.images?.thumbnail ?? '',

@@ -5,9 +5,11 @@ abstract class AppRoutes {
   AppRoutes._();
   static const home = _Paths.home;
   static const article = _Paths.article;
+  static const favorite = _Paths.favorite;
 }
 
 abstract class _Paths {
   static const home = '/home';
   static const article = '/article';
+  static const favorite = '/favorite';
 }
