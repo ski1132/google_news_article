@@ -14,34 +14,18 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Obx(
-                () => DropdownButton<String>(
-                  value: controller.dropdownValue.value,
-                  icon: const Icon(Icons.arrow_downward),
-                  elevation: 16,
-                  style: const TextStyle(color: Colors.deepPurple),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  onChanged: controller.setDropdownValue,
-                  items: controller.dropdownItems.map<DropdownMenuItem<String>>(
-                    (String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    },
-                  ).toList(),
-                ),
-              ),
-            ),
+          SizedBox(width: 20),
+          Image.asset(
+            'assets/images/google_news_icon.png',
+            width: 60,
+            height: 60,
           ),
+          Spacer(),
+          dropdown(),
+          Spacer(),
           IconButton(
             icon: const Icon(Icons.favorite),
             onPressed: () {
@@ -65,6 +49,42 @@ class HomePage extends GetView<HomeController> {
                     : _articleItem(controller.articleItemModelList[index]),
                 separatorBuilder: (context, index) => const Divider(),
               ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget dropdown() {
+    return Container(
+      padding: EdgeInsets.only(left: 10, right: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(),
+        color: Colors.white,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Obx(
+          () => DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: controller.dropdownValue.value,
+              icon: const Icon(Icons.arrow_drop_down),
+              elevation: 16,
+              onChanged: controller.setDropdownValue,
+              dropdownColor: Colors.white,
+              items: controller.dropdownItems.map<DropdownMenuItem<String>>((
+                String value,
+              ) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: TextCustom(
+                    value.tr,
+                    style: StyleConstants.textBlack14Bold,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ),

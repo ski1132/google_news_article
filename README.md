@@ -4,7 +4,6 @@
 # 1.flutter clean
 # 2.flutter pub get
 # 3.flutter pub run build_runner build --delete-conflicting-outputs
-# 4.flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart
 
 # Run project like this
 # flutter run -t lib/main_prod.dart --flavor prod

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:google_news_article/generated/locale_keys.g.dart';
 import 'package:google_news_article/models/article_item_model.dart';
 import 'package:google_news_article/repository/home_repository.dart';
 import 'package:google_news_article/widgets/dialog/basic_alert_widget.dart';
@@ -8,17 +7,10 @@ import 'package:logger/logger.dart';
 class HomeController extends GetxController {
   final repository = Get.find<HomeRepository>();
 
-  final dropdownValue = LocaleKeys.article_latest.tr.obs;
-  final dropdownItems = [
-    LocaleKeys.article_latest.tr,
-    LocaleKeys.article_world.tr,
-    LocaleKeys.article_business.tr,
-    LocaleKeys.article_entertainment.tr,
-    LocaleKeys.article_health.tr,
-    LocaleKeys.article_science.tr,
-    LocaleKeys.article_sport.tr,
-    LocaleKeys.article_technology.tr,
-  ];
+  final dropdownValue = ArticleType.latest.name.obs;
+  final List<String> dropdownItems = ArticleType.values
+      .map((e) => e.name)
+      .toList();
 
   final RxBool isLoading = false.obs;
   final RxList<ArticleItemModel> articleItemModelList =
