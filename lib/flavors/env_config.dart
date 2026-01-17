@@ -18,15 +18,10 @@ class EnvConfig {
     logger = Logger(
       printer: PrettyPrinter(
         methodCount: ValueConstants.loggerMethodCount,
-        // number of method calls to be displayed
         errorMethodCount: ValueConstants.loggerErrorMethodCount,
-        // number of method calls if stacktrace is provided
         lineLength: ValueConstants.loggerLineLength,
-        // width of the output
         colors: true,
-        // Colorful log messages
         printEmojis: true,
-        // Print an emoji for each log message
       ),
     );
   }
