@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_news_article/controllers/home/home_controller.dart';
 import 'package:google_news_article/models/article_item_model.dart';
+import 'package:google_news_article/repository/home_repository.dart';
 import 'package:google_news_article/styles/style_constants.dart';
 import 'package:google_news_article/widgets/image_view/image_url_widget.dart';
 import 'package:google_news_article/widgets/text/text_custom.dart';
@@ -27,7 +28,7 @@ class HomePage extends GetView<HomeController> {
           dropdown(),
           Spacer(),
           IconButton(
-            icon: const Icon(Icons.favorite),
+            icon: const Icon(Icons.favorite_border, size: 32),
             onPressed: () {
               // Add favorite logic here
             },
@@ -68,23 +69,23 @@ class HomePage extends GetView<HomeController> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Obx(
           () => DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
+            child: DropdownButton<ArticleType>(
               value: controller.dropdownValue.value,
               icon: const Icon(Icons.arrow_drop_down),
               elevation: 16,
               onChanged: controller.setDropdownValue,
               dropdownColor: Colors.white,
-              items: controller.dropdownItems.map<DropdownMenuItem<String>>((
-                String value,
-              ) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: TextCustom(
-                    value.tr,
-                    style: StyleConstants.textBlack14Bold,
-                  ),
-                );
-              }).toList(),
+              items: controller.dropdownItems
+                  .map<DropdownMenuItem<ArticleType>>((ArticleType value) {
+                    return DropdownMenuItem<ArticleType>(
+                      value: value,
+                      child: TextCustom(
+                        value.name.tr,
+                        style: StyleConstants.textBlack14Bold,
+                      ),
+                    );
+                  })
+                  .toList(),
             ),
           ),
         ),

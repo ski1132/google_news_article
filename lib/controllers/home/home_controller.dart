@@ -7,10 +7,8 @@ import 'package:logger/logger.dart';
 class HomeController extends GetxController {
   final repository = Get.find<HomeRepository>();
 
-  final dropdownValue = ArticleType.latest.name.obs;
-  final List<String> dropdownItems = ArticleType.values
-      .map((e) => e.name)
-      .toList();
+  final dropdownValue = ArticleType.latest.obs;
+  final List<ArticleType> dropdownItems = ArticleType.values.toList();
 
   final RxBool isLoading = false.obs;
   final RxList<ArticleItemModel> articleItemModelList =
@@ -23,9 +21,10 @@ class HomeController extends GetxController {
     fetchArticleList(ArticleType.latest);
   }
 
-  void setDropdownValue(String? value) {
+  void setDropdownValue(ArticleType? value) {
     if (value != null) {
       dropdownValue.value = value;
+      fetchArticleList(value);
     }
   }
 
