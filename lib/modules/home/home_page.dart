@@ -4,6 +4,8 @@ import 'package:google_news_article/controllers/home/home_controller.dart';
 import 'package:google_news_article/models/article_item_model.dart';
 import 'package:google_news_article/repository/home_repository.dart';
 import 'package:google_news_article/styles/style_constants.dart';
+import 'package:google_news_article/utils/format/date_format.dart';
+import 'package:google_news_article/utils/format/string_format.dart';
 import 'package:google_news_article/widgets/image_view/image_url_widget.dart';
 import 'package:google_news_article/widgets/text/text_custom.dart';
 import 'package:sizer/sizer.dart';
@@ -28,7 +30,7 @@ class HomePage extends GetView<HomeController> {
           dropdown(),
           Spacer(),
           IconButton(
-            icon: const Icon(Icons.favorite_border, size: 32),
+            icon: const Icon(Icons.format_list_bulleted, size: 32),
             onPressed: () {
               // Add favorite logic here
             },
@@ -39,18 +41,30 @@ class HomePage extends GetView<HomeController> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Obx(
-            () => Skeletonizer(
-              enabled: controller.isLoading.value,
-              child: ListView.separated(
-                itemCount: controller.isLoading.value
-                    ? 3
-                    : controller.articleItemModelList.length,
-                itemBuilder: (context, index) => controller.isLoading.value
-                    ? _skeletonItem()
-                    : _articleItem(controller.articleItemModelList[index]),
-                separatorBuilder: (context, index) => const Divider(),
-              ),
-            ),
+            () =>
+                !controller.isLoading.value &&
+                    controller.articleItemModelList.isEmpty
+                ? Center(
+                    child: TextCustom(
+                      controller.errorText.value,
+                      style: StyleConstants.textBlack12,
+                    ),
+                  )
+                : Skeletonizer(
+                    enabled: controller.isLoading.value,
+                    child: ListView.separated(
+                      itemCount: controller.isLoading.value
+                          ? 3
+                          : controller.articleItemModelList.length,
+                      itemBuilder: (context, index) =>
+                          controller.isLoading.value
+                          ? _skeletonItem()
+                          : _articleItem(
+                              controller.articleItemModelList[index],
+                            ),
+                      separatorBuilder: (context, index) => const Divider(),
+                    ),
+                  ),
           ),
         ),
       ),
@@ -124,27 +138,47 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget _articleItem(ArticleItemModel articleItemModel) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        spacing: 16,
-        children: [
-          TextCustom(
-            articleItemModel.title ?? '',
-            style: StyleConstants.textBlack14Bold,
-          ),
-          ImageUrlWidget(
-            articleItemModel.images?.thumbnail ?? '',
-            width: 100.w,
-            fit: BoxFit.fill,
-          ),
-          TextCustom(
-            articleItemModel.snippet ?? '',
-            style: StyleConstants.textBlack14,
-            maxLine: 3,
-            textOverflow: TextOverflow.ellipsis,
-          ),
-        ],
+    return InkWell(
+      onTap: () => controller.routeToArticle(articleItemModel),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          spacing: 16,
+          children: [
+            TextCustom(
+              articleItemModel.title ?? '',
+              style: StyleConstants.textBlack14Bold,
+            ),
+            ImageUrlWidget(
+              articleItemModel.images?.thumbnail ?? '',
+              width: 100.w,
+              fit: BoxFit.fill,
+            ),
+            TextCustom(
+              articleItemModel.snippet ?? '',
+              style: StyleConstants.textBlack14,
+              maxLine: 3,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextCustom(
+                    articleItemModel.timestamp
+                            ?.formatEpochToDateTime()
+                            .formatDMYHM(symbol: ' ') ??
+                        '',
+                    style: StyleConstants.textBlack12,
+                  ),
+                ),
+                TextCustom(
+                  articleItemModel.publisher ?? '',
+                  style: StyleConstants.textBlack14Bold,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:google_news_article/models/article_item_model.dart';
 import 'package:google_news_article/repository/home_repository.dart';
-import 'package:google_news_article/widgets/dialog/basic_alert_widget.dart';
+import 'package:google_news_article/routes/app_pages.dart';
 import 'package:logger/logger.dart';
 
 class HomeController extends GetxController {
@@ -13,6 +14,8 @@ class HomeController extends GetxController {
   final RxBool isLoading = false.obs;
   final RxList<ArticleItemModel> articleItemModelList =
       <ArticleItemModel>[].obs;
+
+  final RxString errorText = 'no_data'.tr.obs;
 
   @override
   void onInit() {
@@ -39,23 +42,40 @@ class HomeController extends GetxController {
               articleItemModelList.addAll(response.items);
             } else {
               Logger().e(
-                'fetchBannerList response status ${response.status} : ${response.message}',
+                'fetchArticleList response status ${response.status} : ${response.message}',
               );
-              BasicAlertWidget.alertWarning(
-                contents: response.message.toString(),
-              );
+              errorText.value = response.message.toString();
             }
           } catch (e) {
-            BasicAlertWidget.alertWarning(contents: '${e.toString()}!');
-            Logger().e('fetchBannerList catch : $e');
+            errorText.value = e.toString();
+            Logger().e('fetchArticleList catch : $e');
           }
         })
         .onError((e, s) async {
-          BasicAlertWidget.alertWarning(contents: e.toString());
-          Logger().e('fetchBannerList onError : $e');
+          if (e is DioException) {
+            if (e.response?.statusCode == 422 ||
+                e.response?.statusCode == 429) {
+              errorText.value = 'exceed_limit'.tr;
+            } else {
+              errorText.value = e.message.toString();
+            }
+          } else {
+            errorText.value = e.toString();
+          }
+          Logger().e('fetchArticleList onError : $e');
         })
         .whenComplete(() {
           isLoading.value = false;
         });
+  }
+
+  void routeToArticle(ArticleItemModel articleItemModel) {
+    Get.toNamed(
+      AppRoutes.article,
+      arguments: {
+        'articleModel': articleItemModel,
+        'articleType': dropdownValue.value.name.tr,
+      },
+    );
   }
 }

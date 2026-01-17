@@ -4,8 +4,10 @@ part of 'app_pages.dart';
 abstract class AppRoutes {
   AppRoutes._();
   static const home = _Paths.home;
+  static const article = _Paths.article;
 }
 
 abstract class _Paths {
   static const home = '/home';
+  static const article = '/article';
 }

@@ -10,8 +10,9 @@ extension StringFormatCustom on String {
   }
 
   DateTime formatEpochToDateTime() {
-    return DateTime.fromMillisecondsSinceEpoch(
-        ((int.tryParse(this) ?? 0)) * 1000);
+    return DateTime.fromMicrosecondsSinceEpoch(
+      ((int.tryParse(this) ?? 0)) * 1000,
+    );
   }
 
   String formatCheckEmpty() {

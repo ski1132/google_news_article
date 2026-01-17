@@ -13,6 +13,12 @@ class LanguageLocaleString extends Translations {
     "science": "Science",
     "sport": "Sport",
     "technology": "Technology",
+    "other_news": "Other News",
+    'previous': 'Previous',
+    'next': 'Next',
+    'no_data': 'No Data',
+    'exceed_limit':
+        'You have exceeded your request limit. Please upgrade your plan.',
   };
 
   Map<String, String> th = {
@@ -24,5 +30,10 @@ class LanguageLocaleString extends Translations {
     "science": "วิทยาศาสตร์",
     "sport": "กีฬา",
     "technology": "เทคโนโลยี",
+    "other_news": "ข่าวอื่นๆ",
+    'previous': 'ก่อนหน้า',
+    'next': 'ถัดไป',
+    'no_data': 'ไม่พบข้อมูล',
+    'exceed_limit': 'คุณส่งคำขอมาเกินลิมิตที่ตั้งไว้แล้ว กรุณาอัพเกรดแพลน',
   };
 }
