@@ -16,8 +16,15 @@ void main() async {
 
   await dotenv.load(fileName: ".env");
   String baseUrl = dotenv.env['baseUrl'] ?? ''; //main ip
+  String host = dotenv.env['host'] ?? '';
+  String key = dotenv.env['key'] ?? '';
 
-  EnvConfig devConfig = EnvConfig(appName: "Google News Dev", baseUrl: baseUrl);
+  EnvConfig devConfig = EnvConfig(
+    appName: "Google News Dev",
+    baseUrl: baseUrl,
+    host: host,
+    key: key,
+  );
 
   BuildConfig.instantiate(
     envType: Environment.DEVELOPMENT,

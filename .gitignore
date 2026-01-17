@@ -57,3 +57,8 @@ pubspec.lock
 .fvm/
 .env
 .fvmrc
+
+# Generated files
+*.g.dart
+*.gen.dart
+*.freezed.dart

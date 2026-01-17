@@ -12,7 +12,7 @@ class TextCustom extends StatelessWidget {
   const TextCustom(
     this.text, {
     super.key,
-    this.style = StyleConstants.textWhite20,
+    this.style = StyleConstants.textBlack20,
     this.textAlign = TextAlign.center,
     this.maxLine,
     this.softWrap = true,

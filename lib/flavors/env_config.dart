@@ -4,10 +4,17 @@ import 'package:logger/logger.dart';
 class EnvConfig {
   final String appName;
   final String baseUrl;
+  final String host;
+  final String key;
 
   late final Logger logger;
 
-  EnvConfig({required this.appName, required this.baseUrl}) {
+  EnvConfig({
+    required this.appName,
+    required this.baseUrl,
+    required this.host,
+    required this.key,
+  }) {
     logger = Logger(
       printer: PrettyPrinter(
         methodCount: ValueConstants.loggerMethodCount,
